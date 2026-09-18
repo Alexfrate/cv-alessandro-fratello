@@ -205,9 +205,10 @@
             .header-info .contact span { display: block; margin-right: 0; margin-bottom: 4px; }
             .exp-header { flex-direction: column; }
             .skills-table td:first-child { width: auto; white-space: normal; }
-            .download-bar { padding: 16px 20px; flex-direction: column; align-items: flex-start; }
-            .qr-box { width: 100%; }
-            .qr-box img { width: 64px; height: 64px; }
+            .download-bar { padding: 16px 20px; flex-direction: column; align-items: center; }
+            .qr-row { flex-direction: column; align-items: center; gap: 12px; }
+            .qr-box { flex-direction: column; align-items: center; text-align: center; }
+            .qr-box img { width: 80px; height: 80px; }
         }
 
         @media print {
@@ -249,6 +250,7 @@
             color: #666;
         }
         .qr-box img { width: 80px; height: 80px; border-radius: 4px; }
+        .qr-row { display: flex; gap: 24px; align-items: center; justify-content: center; }
     </style>
 </head>
 <body>
@@ -398,13 +400,15 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
             Scarica PDF
         </button>
-        <div class="qr-box">
-            <img id="qr-img" src="" alt="QR Code">
-            <span>Scansiona per<br>vedere il portfolio</span>
-        </div>
-        <div class="qr-box">
-            <img id="qr-img2" src="" alt="QR Code Lab Creators">
-            <span>Scansiona per<br>vedere Lab Creators</span>
+        <div class="qr-row">
+            <div class="qr-box">
+                <img id="qr-img" src="" alt="QR Code">
+                <span>Scansiona per<br>vedere il portfolio</span>
+            </div>
+            <div class="qr-box">
+                <img id="qr-img2" src="" alt="QR Code Lab Creators">
+                <span>Scansiona per<br>vedere Lab Creators</span>
+            </div>
         </div>
     </div>
 
