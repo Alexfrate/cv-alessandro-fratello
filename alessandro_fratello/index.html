@@ -3,179 +3,506 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alessandro Fratello — Portfolio</title>
+    <title>Alessandro Fratello | Sviluppatore Web &amp; AI</title>
+    <meta name="description" content="Sviluppatore web full-stack specializzato in WordPress, AI e automazioni. Portfolio e contatti.">
+    <meta name="keywords" content="sviluppatore web, WordPress, React, Next.js, AI, automazioni, freelance, Foggia, Italia">
+    <meta name="author" content="Alessandro Fratello">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Alessandro Fratello | Sviluppatore Web & AI">
+    <meta property="og:description" content="Sviluppatore web full-stack specializzato in WordPress, AI e automazioni.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="foto_alex_sq.jpg">
+    <meta property="og:locale" content="it_IT">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Alessandro Fratello | Sviluppatore Web & AI">
+    <meta name="twitter:description" content="Sviluppatore web full-stack specializzato in WordPress, AI e automazioni.">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='46' fill='%2313273f'/><text x='50' y='58' text-anchor='middle' font-family='system-ui,sans-serif' font-size='36' font-weight='700' fill='%23f8fafc'>AF</text></svg>">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Alessandro Fratello",
+        "jobTitle": "Sviluppatore Web & AI Specialist",
+        "email": "alexfratello1982@gmail.com",
+        "telephone": "+393317181509",
+        "address": { "@type": "PostalAddress", "addressLocality": "Foggia", "addressCountry": "IT" },
+        "sameAs": [
+            "https://linkedin.com/in/alex-fratello-0b1206293",
+            "https://github.com/Alexfrate"
+        ]
+    }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fragment+Mono:ital@0;1&family=Schibsted+Grotesk:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, Roboto, sans-serif;
-            background: #0f172a;
-            color: #f8fafc;
-            min-height: 100vh;
+        *{margin:0;padding:0;box-sizing:border-box}
+        :root{
+            --paper:#f8fafc;--paper-2:#eef2f7;--ink:#13273f;--ink-deep:#0c1a2c;
+            --ink-soft:#3e5571;--ink-mute:#62748c;--hair:#d6dee8;--hair-soft:#e5ebf2;
+            --verm:#d6492f;--verm-dark:#b03a24;
+            --sans:'Schibsted Grotesk',system-ui,sans-serif;
+            --mono:'Fragment Mono',ui-monospace,'SF Mono',Menlo,monospace;
+            --radius:8px;--shadow:0 1px 3px rgba(0,0,0,.06),0 1px 2px rgba(0,0,0,.04)
         }
-        .hero {
-            text-align: center;
-            padding: 60px 20px 40px;
+        html{scroll-behavior:smooth}
+        body{background:var(--paper);color:var(--ink);font-family:var(--sans);line-height:1.55;-webkit-font-smoothing:antialiased}
+        ::selection{background:var(--verm);color:#fff}
+
+        /* NAV */
+        .nav{position:sticky;top:0;z-index:100;background:rgba(248,250,252,.88);backdrop-filter:blur(10px);border-bottom:1px solid var(--hair)}
+        .nav-inner{max-width:1120px;margin:0 auto;padding:0 28px;display:flex;align-items:center;justify-content:space-between;height:64px}
+        .nav-brand{font-weight:700;font-size:1rem;color:var(--ink);text-decoration:none;letter-spacing:-.01em}
+        .nav-tabs{display:flex;gap:4px}
+        .nav-tab{padding:8px 16px;font-size:.88rem;font-weight:500;color:var(--ink-soft);text-decoration:none;border-radius:6px;transition:all .2s;cursor:pointer;border:none;background:none;font-family:var(--sans)}
+        .nav-tab:hover{color:var(--ink);background:var(--hair-soft)}
+        .nav-tab.active{color:var(--verm);background:rgba(214,73,47,.08)}
+        .nav-cta{display:inline-flex;align-items:center;gap:6px;padding:9px 18px;font-size:.85rem;font-weight:600;color:#fff;background:var(--ink);border:none;border-radius:6px;text-decoration:none;transition:all .2s;font-family:var(--sans)}
+        .nav-cta:hover{background:var(--ink-deep);transform:translateY(-1px)}
+        .nav-cv{display:inline-flex;align-items:center;gap:6px;padding:9px 18px;font-size:.85rem;font-weight:600;color:var(--ink);background:none;border:1.5px solid var(--hair);border-radius:6px;text-decoration:none;transition:all .2s;font-family:var(--sans)}
+        .nav-cv:hover{border-color:var(--ink);background:var(--hair-soft)}
+        .nav-actions{display:flex;align-items:center;gap:8px}
+        .nav-hamburger{display:none;background:none;border:none;cursor:pointer;padding:8px;color:var(--ink)}
+        .nav-hamburger svg{width:22px;height:22px}
+        .mobile-menu{display:none;position:fixed;top:64px;left:0;right:0;background:var(--paper);border-bottom:1px solid var(--hair);padding:16px 28px;z-index:99;flex-direction:column;gap:4px}
+        .mobile-menu.open{display:flex}
+        .mobile-menu .nav-tab{width:100%;text-align:left;padding:12px 16px;font-size:.95rem;border-radius:6px}
+        .mobile-menu .nav-tab.active{color:var(--verm);background:rgba(214,73,47,.08)}
+        .mobile-menu .mobile-actions{display:flex;gap:8px;margin-top:8px;padding-top:12px;border-top:1px solid var(--hair)}
+        .mobile-menu .mobile-actions a{flex:1}
+
+        /* CONTAINER */
+        .container{max-width:1120px;margin:0 auto;padding:0 28px}
+
+        /* TAB PANELS */
+        .tab-panel{display:none;padding:96px 0 110px}
+        .tab-panel.active{display:block}
+
+        /* EYEBROW */
+        .eyebrow{display:inline-flex;align-items:center;gap:10px;font-family:var(--mono);font-size:.72rem;font-weight:400;text-transform:uppercase;letter-spacing:.1em;color:var(--ink-soft)}
+        .eyebrow::before{content:"";width:7px;height:7px;background:var(--verm);align-self:center;flex:0 0 auto}
+
+        /* ABOUT GRID */
+        .about-grid{display:grid;grid-template-columns:340px 1fr;gap:64px;align-items:start}
+        .photo-wrap{position:relative;padding:16px;padding-top:32px}
+        .cmark{position:absolute;width:16px;height:16px;border:0 solid var(--ink);opacity:.55}
+        .cmark.tl{top:0;left:0;border-top-width:1.5px;border-left-width:1.5px}
+        .cmark.tr{top:0;right:0;border-top-width:1.5px;border-right-width:1.5px}
+        .cmark.bl{bottom:0;left:0;border-bottom-width:1.5px;border-left-width:1.5px}
+        .cmark.br{bottom:0;right:0;border-bottom-width:1.5px;border-right-width:1.5px}
+        .about-photo{width:100%;aspect-ratio:4/5;border-radius:4px;object-fit:cover;display:block}
+        .about-name{font-size:clamp(2.6rem,5.2vw,4rem);font-weight:650;letter-spacing:-.03em;color:var(--ink);line-height:1.02;margin-top:20px}
+        .about-role{font-size:1.12rem;color:var(--verm-dark);font-weight:600;margin-top:6px}
+        .about-lead{font-size:1.12rem;color:var(--ink-soft);line-height:1.6;margin-top:18px}
+        .about-sub{font-family:var(--mono);font-size:.68rem;font-weight:400;text-transform:uppercase;letter-spacing:.1em;color:var(--ink-mute);margin-top:28px}
+        .about-list{list-style:none;padding:0;margin-top:16px;display:flex;flex-direction:column;gap:11px}
+        .about-list li{position:relative;padding-left:24px;font-size:.97rem;color:var(--ink-soft);line-height:1.5}
+        .about-list li::before{content:"";position:absolute;left:2px;top:9px;width:6px;height:6px;background:var(--ink)}
+        .about-list a{color:var(--ink);font-weight:500;text-decoration:underline;text-underline-offset:3px}
+        .about-list a:hover{color:var(--verm-dark)}
+        .about-cta{display:inline-flex;align-items:center;gap:8px;margin-top:28px;padding:13px 22px;font-size:.92rem;font-weight:600;color:#fff;background:var(--ink);border:none;border-radius:6px;text-decoration:none;transition:all .2s;font-family:var(--sans)}
+        .about-cta:hover{background:var(--ink-deep);transform:translateY(-1px)}
+
+        /* SKILLS */
+        .skills-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+        .skill-card{background:var(--paper);border:1px solid var(--hair);border-radius:var(--radius);padding:24px}
+        .skill-card-header{display:flex;align-items:center;gap:10px;margin-bottom:18px}
+        .skill-card-icon{width:32px;height:32px;border-radius:6px;background:rgba(214,73,47,.08);display:flex;align-items:center;justify-content:center}
+        .skill-card-icon svg{width:16px;height:16px;color:var(--verm)}
+        .skill-card-title{font-size:.88rem;font-weight:600;color:var(--ink)}
+        .skill-bar{margin-bottom:12px}
+        .skill-bar:last-child{margin-bottom:0}
+        .skill-bar-header{display:flex;justify-content:space-between;font-size:.82rem;margin-bottom:5px}
+        .skill-bar-name{font-family:var(--mono);color:var(--ink);font-size:.8rem}
+        .skill-bar-level{color:var(--ink-mute);font-size:.75rem}
+        .skill-bar-track{height:6px;background:var(--hair-soft);border-radius:99px;overflow:hidden}
+        .skill-bar-fill{height:100%;background:linear-gradient(90deg,var(--verm),#b03a24);border-radius:99px}
+
+        /* PROJECTS */
+        .projects-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px}
+        .project-card{background:var(--paper);border:1px solid var(--hair);border-radius:var(--radius);overflow:hidden;transition:transform .2s,box-shadow .2s}
+        .project-card:hover{transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,.08)}
+        .project-image{height:180px;overflow:hidden;position:relative;background:var(--paper-2)}
+        .project-image img{width:100%;height:100%;object-fit:cover;object-position:top}
+        .project-image::after{content:"";position:absolute;bottom:0;left:0;width:100%;height:40%;background:linear-gradient(to top,var(--paper),transparent)}
+        .project-body{padding:20px}
+        .project-body h3{font-weight:700;color:var(--ink);font-size:1.05rem;margin-bottom:4px}
+        .project-body p{font-size:.88rem;color:var(--ink-soft);margin-bottom:12px;line-height:1.6}
+        .project-tags{display:flex;flex-wrap:wrap;gap:5px}
+        .project-tags span{font-size:.72rem;font-family:var(--mono);padding:3px 9px;border-radius:6px;background:rgba(214,73,47,.08);color:var(--verm-dark);font-weight:400}
+
+        /* CONTACT */
+        .contact-section{background:var(--ink);padding:64px;border-radius:var(--radius);margin-top:0;color:var(--paper)}
+        .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+        .contact-title{font-size:clamp(1.9rem,3.5vw,2.8rem);font-weight:650;color:var(--paper);line-height:1.05;letter-spacing:-.025em}
+        .contact-lead{color:rgba(248,250,252,.72);margin-top:16px;font-size:1.05rem;line-height:1.6}
+        .contact-socials{display:flex;gap:10px;margin-top:24px;flex-wrap:wrap}
+        .contact-socials a{display:inline-flex;align-items:center;gap:6px;padding:10px 16px;font-size:.82rem;font-weight:500;color:rgba(248,250,252,.82);background:rgba(248,250,252,.05);border:1px solid rgba(248,250,252,.18);border-radius:6px;text-decoration:none;transition:all .2s;font-family:var(--sans)}
+        .contact-socials a:hover{background:rgba(248,250,252,.12);color:var(--paper);transform:translateY(-1px)}
+        .contact-socials svg{width:14px;height:14px}
+        .form-card{border:1px solid rgba(248,250,252,.16);border-radius:10px;padding:30px;background:rgba(248,250,252,.035)}
+        .form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+        .field{margin-bottom:16px}
+        .field label{display:block;font-family:var(--mono);font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;color:rgba(248,250,252,.7);margin-bottom:7px}
+        .field input,.field textarea{width:100%;padding:12px 14px;font-size:.92rem;font-family:var(--sans);color:var(--paper);background:rgba(248,250,252,.05);border:1px solid rgba(248,250,252,.18);border-radius:6px;outline:none;transition:border-color .2s}
+        .field input:focus,.field textarea:focus{border-color:rgba(195,228,255,.6);box-shadow:0 0 0 2px rgba(195,228,255,.15)}
+        .field textarea{resize:vertical;min-height:124px;line-height:1.5}
+        .btn-submit{padding:13px 22px;font-size:.92rem;font-weight:600;color:var(--paper);background:var(--ink);border:1px solid var(--hair);border-radius:6px;cursor:pointer;transition:all .2s;font-family:var(--sans)}
+        .btn-submit:hover{background:var(--ink-deep);transform:translateY(-1px)}
+        .form-foot{font-family:var(--mono);font-size:.66rem;letter-spacing:.03em;color:rgba(248,250,252,.5);margin-top:12px;text-align:center;line-height:1.6}
+        .form-confirm{display:flex;align-items:center;gap:8px;padding:12px 16px;border-radius:6px;background:rgba(34,197,94,.12);border:1px solid rgba(34,197,94,.3);color:#86efac;font-size:.88rem;margin-top:14px;font-family:var(--sans)}
+
+        /* FOOTER */
+        footer{padding:56px 0 40px;border-top:1px solid var(--hair)}
+        .footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:48px}
+        .footer-name{font-weight:700;font-size:1rem;color:var(--ink);margin-bottom:10px}
+        .footer-tagline{font-size:.88rem;color:var(--ink-soft);line-height:1.6;max-width:320px}
+        .footer-socials{display:flex;gap:12px;margin-top:16px}
+        .footer-socials a{font-size:.82rem;font-weight:500;color:var(--ink-mute);text-decoration:none;transition:color .2s}
+        .footer-socials a:hover{color:var(--verm)}
+        footer h4{font-family:var(--mono);font-size:.68rem;font-weight:400;text-transform:uppercase;letter-spacing:.1em;color:var(--ink-mute);margin-bottom:14px}
+        footer ul{list-style:none;padding:0}
+        footer ul li{margin-bottom:8px}
+        footer ul li,footer ul a{font-size:.88rem;color:var(--ink-soft);text-decoration:none;transition:color .2s}
+        footer ul a:hover{color:var(--ink)}
+        .footer-copy{font-family:var(--mono);font-size:.64rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-mute);margin-top:40px;padding-top:24px;border-top:1px solid var(--hair-soft)}
+
+        /* RESPONSIVE */
+        @media(max-width:980px){
+            .about-grid{grid-template-columns:1fr}
+            .photo-wrap{max-width:360px}
         }
-        .hero img {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            border: 3px solid #3b82f6;
-            margin-bottom: 16px;
+        @media(max-width:860px){
+            .nav-tabs{display:none}
+            .nav-actions{display:none}
+            .nav-hamburger{display:flex}
+            .contact-grid{grid-template-columns:1fr}
+            .footer-grid{grid-template-columns:1fr 1fr}
         }
-        .hero h1 {
-            font-size: 28px;
-            font-weight: 700;
-            margin-bottom: 6px;
-        }
-        .hero .role {
-            font-size: 16px;
-            color: #94a3b8;
-            margin-bottom: 20px;
-        }
-        .hero .contact {
-            font-size: 13px;
-            color: #64748b;
-        }
-        .hero .contact a {
-            color: #3b82f6;
-            text-decoration: none;
-        }
-        .projects {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 0 20px 40px;
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 20px;
-        }
-        .card {
-            background: #1e293b;
-            border-radius: 12px;
-            overflow: hidden;
-            transition: transform .2s;
-        }
-        .card:hover { transform: translateY(-4px); }
-        .card img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-        }
-        .card-body {
-            padding: 16px;
-        }
-        .card-body h3 {
-            font-size: 16px;
-            margin-bottom: 6px;
-        }
-        .card-body p {
-            font-size: 13px;
-            color: #94a3b8;
-            line-height: 1.5;
-        }
-        .links {
-            text-align: center;
-            padding: 20px;
-            display: flex;
-            justify-content: center;
-            gap: 16px;
-            flex-wrap: wrap;
-        }
-        .links a {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 10px 20px;
-            background: #3b82f6;
-            color: #fff;
-            border-radius: 8px;
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 600;
-            transition: background .2s;
-        }
-        .links a:hover { background: #2563eb; }
-        .links a.secondary {
-            background: transparent;
-            border: 1px solid #334155;
-            color: #94a3b8;
-        }
-        .links a.secondary:hover {
-            border-color: #3b82f6;
-            color: #f8fafc;
-        }
-        .qr-section {
-            text-align: center;
-            padding: 30px 20px 60px;
-        }
-        .qr-section img {
-            width: 120px;
-            height: 120px;
-            border-radius: 8px;
-            margin-bottom: 10px;
-        }
-        .qr-section p {
-            font-size: 12px;
-            color: #64748b;
-        }
-        @media (min-width: 600px) {
-            .projects { grid-template-columns: 1fr 1fr; }
+        @media(max-width:768px){
+            .about-list li{text-align:left}
+            .skills-grid{grid-template-columns:1fr}
+            .form-row{grid-template-columns:1fr}
+            section{padding:70px 0}
+            .footer-grid{grid-template-columns:1fr}
+            .footer-tagline{max-width:100%}
         }
     </style>
 </head>
 <body>
 
-    <div class="hero">
-        <img src="foto_alex_sq.jpg" alt="Alessandro Fratello">
-        <h1>Alessandro Fratello</h1>
-        <div class="role">Sviluppatore Web & AI Specialist</div>
-        <div class="contact">
-            <a href="mailto:alexfratello1982@gmail.com">alexfratello1982@gmail.com</a> &bull;
-            <a href="https://linkedin.com/in/alex-fratello-0b1206293" target="_blank">LinkedIn</a>
+<!-- NAV -->
+<nav class="nav">
+    <div class="nav-inner">
+        <a class="nav-brand" href="#">Alessandro Fratello</a>
+        <div class="nav-tabs">
+            <button class="nav-tab active" data-tab="chi-sono">Chi sono</button>
+            <button class="nav-tab" data-tab="competenze">Competenze</button>
+            <button class="nav-tab" data-tab="progetti">Progetti</button>
+            <button class="nav-tab" data-tab="contatto">Contatto</button>
+        </div>
+        <div class="nav-actions">
+            <a class="nav-cv" href="cv_alex.html" target="_blank">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                CV
+            </a>
+            <a class="nav-cta" href="#" data-tab="contatto">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                Contattami
+            </a>
+        </div>
+        <button class="nav-hamburger" onclick="toggleMobileMenu()" aria-label="Menu">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+    </div>
+    <div class="mobile-menu" id="mobile-menu">
+        <button class="nav-tab active" data-tab="chi-sono" onclick="switchTab('chi-sono');closeMobileMenu()">Chi sono</button>
+        <button class="nav-tab" data-tab="competenze" onclick="switchTab('competenze');closeMobileMenu()">Competenze</button>
+        <button class="nav-tab" data-tab="progetti" onclick="switchTab('progetti');closeMobileMenu()">Progetti</button>
+        <button class="nav-tab" data-tab="contatto" onclick="switchTab('contatto');closeMobileMenu()">Contatto</button>
+        <div class="mobile-actions">
+            <a class="nav-cv" href="cv_alex.html" target="_blank">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                CV
+            </a>
+            <a class="nav-cta" href="#" data-tab="contatto" onclick="switchTab('contatto');closeMobileMenu()">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                Contattami
+            </a>
         </div>
     </div>
+    </div>
+</nav>
 
-    <div class="projects">
-        <div class="card">
-            <img src="screenshot_labcreators.jpg" alt="Lab Creators">
-            <div class="card-body">
-                <h3>Lab Creators</h3>
-                <p>Siti web vetrina, landing page, e-commerce e automazioni WhatsApp per PMI italiane.</p>
+<!-- TAB: CHI SONO -->
+<div class="tab-panel active" id="chi-sono">
+    <div class="container">
+        <div class="about-grid">
+            <div class="photo-wrap">
+                <span class="cmark tl" aria-hidden="true"></span><span class="cmark tr" aria-hidden="true"></span>
+                <span class="cmark bl" aria-hidden="true"></span><span class="cmark br" aria-hidden="true"></span>
+                <img src="foto_alex_sq.jpg" alt="Alessandro Fratello" class="about-photo">
+            </div>
+            <div>
+                <span class="eyebrow">About &middot; il fondatore</span>
+                <h1 class="about-name">Alessandro Fratello</h1>
+                <p class="about-role">Sviluppatore Web &amp; AI Specialist</p>
+                <p class="about-lead">Sviluppatore web full-stack con 3-5 anni di esperienza nella progettazione e realizzazione di soluzioni digitali per PMI e startup. Specializzato in <strong>WordPress</strong>, <strong>web app moderne</strong> e <strong>integrazione di soluzioni AI</strong> per l'automazione dei processi di business.</p>
+
+                <h4 class="about-sub">Esperienza</h4>
+                <ul class="about-list">
+                    <li><strong>Sevedo Agency</strong>, sviluppo siti web, e-commerce, integrazione AI agent, web app con Next.js, React, Supabase <a href="https://sevedo.it" target="_blank" rel="noopener">→</a></li>
+                    <li><strong>Lab Creators</strong>, sviluppo WordPress, restyling, automazioni, bot WhatsApp, web app su misura per PMI <a href="https://www.labcreators.it" target="_blank" rel="noopener">→</a></li>
+                    <li><strong>Leader24</strong>, sviluppo e test browser plugin, QA testing, automazione customer service, debugging <a href="https://leader24.ai/it" target="_blank" rel="noopener">→</a></li>
+                </ul>
+
+                <h4 class="about-sub">Formazione</h4>
+                <ul class="about-list">
+                    <li>Formazione continua e autonoma, aggiornamento costante tramite documentazione ufficiale, community di sviluppo, corsi specializzati e pratica hands-on su progetti reali.</li>
+                </ul>
+
+                <a class="about-cta" href="#contatto" onclick="switchTab('contatto')">
+                    Parliamo del tuo progetto
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </a>
             </div>
         </div>
-        <div class="card">
-            <img src="screenshot_leader24.jpg" alt="Leader24">
-            <div class="card-body">
-                <h3>Leader24</h3>
-                <p>Piattaforma AI per WhatsApp e customer service con browser plugin e automazioni.</p>
+    </div>
+</div>
+
+<!-- TAB: COMPETENZE -->
+<div class="tab-panel" id="competenze">
+    <div class="container">
+        <span class="eyebrow">Skills</span>
+        <h2 style="font-size:clamp(1.9rem,3.5vw,2.8rem);font-weight:700;letter-spacing:-.025em;margin-top:14px;margin-bottom:32px">Competenze Tecniche</h2>
+        <div class="skills-grid">
+            <div class="skill-card">
+                <div class="skill-card-header">
+                    <div class="skill-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></div>
+                    <h3 class="skill-card-title">CMS &amp; E-commerce</h3>
+                </div>
+                <div class="skill-bar"><div class="skill-bar-header"><span class="skill-bar-name">WordPress</span><span class="skill-bar-level">90%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" style="width:90%"></div></div></div>
+                <div class="skill-bar"><div class="skill-bar-header"><span class="skill-bar-name">WooCommerce</span><span class="skill-bar-level">85%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" style="width:85%"></div></div></div>
+                <div class="skill-bar"><div class="skill-bar-header"><span class="skill-bar-name">Elementor</span><span class="skill-bar-level">80%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" style="width:80%"></div></div></div>
+            </div>
+            <div class="skill-card">
+                <div class="skill-card-header">
+                    <div class="skill-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
+                    <h3 class="skill-card-title">Frontend &amp; Framework</h3>
+                </div>
+                <div class="skill-bar"><div class="skill-bar-header"><span class="skill-bar-name">React / Next.js</span><span class="skill-bar-level">85%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" style="width:85%"></div></div></div>
+                <div class="skill-bar"><div class="skill-bar-header"><span class="skill-bar-name">HTML5 / CSS3</span><span class="skill-bar-level">92%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" style="width:92%"></div></div></div>
+                <div class="skill-bar"><div class="skill-bar-header"><span class="skill-bar-name">JavaScript</span><span class="skill-bar-level">80%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" style="width:80%"></div></div></div>
+            </div>
+            <div class="skill-card">
+                <div class="skill-card-header">
+                    <div class="skill-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 1010 10A10 10 0 0012 2zm0 18a8 8 0 118-8 8 8 0 01-8 8z"/><path d="M12 6v6l4 2"/></svg></div>
+                    <h3 class="skill-card-title">AI &amp; Automazione</h3>
+                </div>
+                <div class="skill-bar"><div class="skill-bar-header"><span class="skill-bar-name">AI Agent / Chatbot</span><span class="skill-bar-level">88%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" style="width:88%"></div></div></div>
+                <div class="skill-bar"><div class="skill-bar-header"><span class="skill-bar-name">MCP / API REST</span><span class="skill-bar-level">82%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" style="width:82%"></div></div></div>
+                <div class="skill-bar"><div class="skill-bar-header"><span class="skill-bar-name">Coding Agent Tools</span><span class="skill-bar-level">85%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" style="width:85%"></div></div></div>
+            </div>
+            <div class="skill-card">
+                <div class="skill-card-header">
+                    <div class="skill-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg></div>
+                    <h3 class="skill-card-title">Database &amp; Cloud</h3>
+                </div>
+                <div class="skill-bar"><div class="skill-bar-header"><span class="skill-bar-name">PostgreSQL / Supabase</span><span class="skill-bar-level">80%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" style="width:80%"></div></div></div>
+                <div class="skill-bar"><div class="skill-bar-header"><span class="skill-bar-name">Vercel / Cloudflare</span><span class="skill-bar-level">85%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" style="width:85%"></div></div></div>
+                <div class="skill-bar"><div class="skill-bar-header"><span class="skill-bar-name">PHP / Node.js</span><span class="skill-bar-level">78%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" style="width:78%"></div></div></div>
             </div>
         </div>
-        <div class="card">
-            <img src="screenshot_sevedo.jpg" alt="Sevedo Agency">
-            <div class="card-body">
-                <h3>Sevedo Agency</h3>
-                <p>Web design e development agency a Phuket. Siti professionali, e-commerce e web app.</p>
+    </div>
+</div>
+
+<!-- TAB: PROGETTI -->
+<div class="tab-panel" id="progetti">
+    <div class="container">
+        <span class="eyebrow">Portfolio</span>
+        <h2 style="font-size:clamp(1.9rem,3.5vw,2.8rem);font-weight:700;letter-spacing:-.025em;margin-top:14px;margin-bottom:32px">Progetti</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-image"><img src="screenshot_sevedo.jpg" alt="Sevedo Agency"></div>
+                <div class="project-body">
+                    <h3>Sevedo Agency</h3>
+                    <p>Sviluppo siti web, e-commerce e integrazione AI agent per agency con clienti in tutto il mondo.</p>
+                    <div class="project-tags"><span>WordPress</span><span>Next.js</span><span>React</span><span>AI Agent</span></div>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-image"><img src="screenshot_labcreators.jpg" alt="Lab Creators"></div>
+                <div class="project-body">
+                    <h3>Lab Creators</h3>
+                    <p>Web agency italiana. Sviluppo WordPress, restyling, automazioni e bot WhatsApp per PMI.</p>
+                    <div class="project-tags"><span>WordPress</span><span>WooCommerce</span><span>PHP</span><span>Automazioni</span></div>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-image"><img src="screenshot_leader24.jpg" alt="Leader24"></div>
+                <div class="project-body">
+                    <h3>Leader24</h3>
+                    <p>Piattaforma SaaS multi-tenant per agenti AI su WhatsApp e livechat. Sviluppo e test browser plugin.</p>
+                    <div class="project-tags"><span>AI/LLM</span><span>WhatsApp API</span><span>Browser Plugin</span></div>
+                </div>
             </div>
         </div>
     </div>
+</div>
 
-    <div class="links">
-        <a href="cv_alex.html">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-            Scarica CV
-        </a>
-        <a href="https://sevedo.it" target="_blank" class="secondary">Portfolio completo →</a>
+<!-- TAB: CONTATTO -->
+<div class="tab-panel" id="contatto">
+    <div class="container">
+        <div class="contact-section">
+            <div class="contact-grid">
+                <div>
+                    <span class="eyebrow" style="color:#60a5fa">Contact</span>
+                    <h2 class="contact-title">Parliamo del tuo progetto</h2>
+                    <p class="contact-lead">Compila il form e ti rispondo entro 1 giorno lavorativo. O scrivimi direttamente.</p>
+                    <div class="contact-socials">
+                        <a href="mailto:alexfratello1982@gmail.com">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                            Email
+                        </a>
+                        <a href="https://linkedin.com/in/alex-fratello-0b1206293" target="_blank" rel="noopener">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                            LinkedIn
+                        </a>
+                        <a href="https://github.com/Alexfrate" target="_blank" rel="noopener">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                            GitHub
+                        </a>
+                    </div>
+                </div>
+                <form class="form-card" action="https://formsubmit.co/alexfratello1982@gmail.com" method="POST">
+                    <input type="hidden" name="_subject" value="Nuovo messaggio dal portfolio">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_next" value="">
+                    <div class="form-row">
+                        <div class="field">
+                            <label for="f-nome">Nome</label>
+                            <input id="f-nome" name="name" autocomplete="name" required placeholder="Il tuo nome">
+                        </div>
+                        <div class="field">
+                            <label for="f-email">Email</label>
+                            <input id="f-email" name="email" type="email" autocomplete="email" required placeholder="la-tua@email.it">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label for="f-msg">Messaggio</label>
+                        <textarea id="f-msg" name="message" rows="5" required placeholder="Raccontami del tuo progetto..."></textarea>
+                    </div>
+                    <button class="btn-submit" type="submit">Invia messaggio</button>
+                    <div id="form-confirm" class="form-confirm" style="display:none">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                        <span>Messaggio inviato! Ti rispondo entro 1 giorno lavorativo.</span>
+                    </div>
+                    <p class="form-foot">Nessun dato viene memorizzato. Risposta entro 1 giorno lavorativo.</p>
+                </form>
+            </div>
+        </div>
     </div>
+</div>
 
-    <div class="qr-section">
-        <img id="qr-img" src="" alt="QR Code">
-        <p>Scansiona per vedere il CV online</p>
+<!-- FOOTER -->
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div>
+                <p class="footer-name">Alessandro Fratello</p>
+                <p class="footer-tagline">Sviluppatore web full-stack specializzato in WordPress, AI e automazioni.</p>
+                <div class="footer-socials">
+                    <a href="mailto:alexfratello1982@gmail.com">Email</a>
+                    <a href="https://linkedin.com/in/alex-fratello-0b1206293" target="_blank" rel="noopener">LinkedIn</a>
+                    <a href="https://github.com/Alexfrate" target="_blank" rel="noopener">GitHub</a>
+                </div>
+            </div>
+            <div>
+                <h4>Servizi</h4>
+                <ul>
+                    <li>WordPress &amp; WooCommerce</li>
+                    <li>Web App (React, Next.js)</li>
+                    <li>AI Agent &amp; Automazioni</li>
+                </ul>
+            </div>
+            <div>
+                <h4>Navigazione</h4>
+                <ul>
+                    <li><a href="#" onclick="switchTab('chi-sono')">Chi sono</a></li>
+                    <li><a href="#" onclick="switchTab('competenze')">Competenze</a></li>
+                    <li><a href="#" onclick="switchTab('progetti')">Progetti</a></li>
+                    <li><a href="#" onclick="switchTab('contatto')">Contatto</a></li>
+                </ul>
+            </div>
+        </div>
+        <p class="footer-copy">&copy; 2026 Alessandro Fratello &middot; Foggia, Italia &middot; Autorizzo il trattamento dei miei dati personali ai sensi del Regolamento UE 2016/679 (GDPR).</p>
     </div>
+</footer>
 
-    <script>
-    document.getElementById('qr-img').src =
-        'https://api.qrserver.com/v1/create-qr-code/?size=240x240&data=' + encodeURIComponent('https://cv.labcreators.it/alessandro_fratello/');
-    </script>
+<script>
+// Tab navigation
+function switchTab(tabId) {
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+    document.getElementById(tabId).classList.add('active');
+    document.querySelectorAll('[data-tab="'+tabId+'"]').forEach(t => t.classList.add('active'));
+    window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+// Mobile menu
+function toggleMobileMenu() {
+    document.getElementById('mobile-menu').classList.toggle('open');
+}
+function closeMobileMenu() {
+    document.getElementById('mobile-menu').classList.remove('open');
+}
+document.addEventListener('click', function(e) {
+    const menu = document.getElementById('mobile-menu');
+    const btn = document.querySelector('.nav-hamburger');
+    if (menu && !menu.contains(e.target) && !btn.contains(e.target)) {
+        closeMobileMenu();
+    }
+});
+
+document.querySelectorAll('[data-tab]').forEach(btn => {
+    btn.addEventListener('click', e => {
+        e.preventDefault();
+        switchTab(btn.dataset.tab);
+    });
+});
+
+// Contact form → FormSubmit.co (AJAX)
+document.querySelector('.form-card').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const form = this;
+    const confirm = document.getElementById('form-confirm');
+    const btn = form.querySelector('.btn-submit');
+    btn.textContent = 'Invio in corso...';
+    btn.disabled = true;
+    fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+    }).then(response => {
+        if (response.ok) {
+            form.style.display = 'none';
+            confirm.style.display = 'flex';
+        } else {
+            response.json().then(data => {
+                if (data.errors) {
+                    alert(data.errors.map(e => e.message).join('\n'));
+                }
+            });
+        }
+        btn.textContent = 'Invia messaggio';
+        btn.disabled = false;
+    }).catch(() => {
+        alert('Errore di rete. Riprova più tardi.');
+        btn.textContent = 'Invia messaggio';
+        btn.disabled = false;
+    });
+});
+</script>
+
 </body>
 </html>
