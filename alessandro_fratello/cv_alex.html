@@ -199,6 +199,14 @@
             margin-top: 12px;
         }
 
+        @media (max-width: 600px) {
+            .page { padding: 16px 20px; }
+            .header { flex-direction: column; text-align: center; gap: 12px; }
+            .header-info .contact span { display: block; margin-right: 0; margin-bottom: 4px; }
+            .exp-header { flex-direction: column; }
+            .skills-table td:first-child { width: auto; white-space: normal; }
+        }
+
         @media print {
             body { background: #fff; }
             .page { padding: 0; }
