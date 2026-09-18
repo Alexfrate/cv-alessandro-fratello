@@ -391,12 +391,17 @@
             <img id="qr-img" src="" alt="QR Code">
             <span>Scansiona per<br>vedere il portfolio</span>
         </div>
+        <div class="qr-box">
+            <img id="qr-img2" src="" alt="QR Code Lab Creators">
+            <span>Scansiona per<br>vedere Lab Creators</span>
+        </div>
     </div>
 
     <script>
-    // QR points to portfolio for online version
     document.getElementById('qr-img').src =
         'https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=' + encodeURIComponent('https://cv.labcreators.it/alessandro_fratello/');
+    document.getElementById('qr-img2').src =
+        'https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=' + encodeURIComponent('https://www.labcreators.it/');
     </script>
 </body>
 </html>
