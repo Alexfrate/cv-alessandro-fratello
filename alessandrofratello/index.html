@@ -1,29 +1,85 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="it">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/svg+xml" href="/alessandrofratello/favicon.svg" />
-    <title>Alessandro Fratello — Curriculum Vitae</title>
-    <meta name="description" content="Curriculum vitae di Alessandro Fratello, web designer e frontend developer." />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-    <!-- Al refresh il browser ripristina l'ultima posizione: la pagina deve
-         ripartire dall'header/hero. Deve essere INLINE e prima del body —
-         i module script sono deferred e arrivano troppo tardi (il ripristino
-         avviene comunque e resta). -->
-    <script>
-      if ("scrollRestoration" in history) history.scrollRestoration = "manual";
-      window.scrollTo(0, 0);
-      window.addEventListener("pageshow", function (e) {
-        if (e.persisted) window.scrollTo(0, 0);
-      });
-    </script>
-    <script type="module" crossorigin src="/alessandrofratello/assets/index-DQbw-XvI.js"></script>
-    <link rel="stylesheet" crossorigin href="/alessandrofratello/assets/index-BFKgrL6a.css">
-  </head>
-  <body>
-    <div id="root"></div>
-  </body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>In aggiornamento</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230a0a0b'/%3E%3Crect x='9' y='9' width='14' height='14' fill='%23f4551e'/%3E%3C/svg%3E">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; margin: 0; }
+        body {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 28px;
+            padding: 40px 24px;
+            background: #0a0a0b;
+            color: #f2eded;
+            font-family: "Inter", system-ui, sans-serif;
+            text-align: center;
+        }
+        .label {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: ui-monospace, "SF Mono", Menlo, monospace;
+            font-size: 12px;
+            letter-spacing: 0.28em;
+            text-transform: uppercase;
+            color: rgba(242, 237, 237, 0.7);
+        }
+        .label::before {
+            content: "";
+            width: 11px;
+            height: 11px;
+            background: #f4551e;
+        }
+        h1 {
+            font-family: "Big Shoulders Display", system-ui, sans-serif;
+            font-weight: 900;
+            font-size: clamp(52px, 12vw, 120px);
+            line-height: 0.92;
+            text-transform: uppercase;
+            letter-spacing: 0.01em;
+        }
+        p {
+            max-width: 44ch;
+            font-size: 16px;
+            line-height: 1.65;
+            color: rgba(242, 237, 237, 0.75);
+        }
+        a {
+            color: #f4551e;
+            text-decoration: none;
+            border-bottom: 1px solid rgba(244, 85, 30, 0.4);
+            transition: border-color 0.2s;
+        }
+        a:hover { border-color: #f4551e; }
+        footer {
+            position: fixed;
+            bottom: 20px;
+            font-family: ui-monospace, "SF Mono", Menlo, monospace;
+            font-size: 11px;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: rgba(242, 237, 237, 0.4);
+        }
+    </style>
+</head>
+<body>
+    <div class="label">Sito in aggiornamento</div>
+    <h1>Torno<br>a breve.</h1>
+    <p>
+        Il sito &egrave; temporaneamente non disponibile.<br>
+        Per contatti:
+        <a href="mailto:alexfratello1982@gmail.com">alexfratello1982@gmail.com</a>
+    </p>
+    <footer>Alessandro Fratello &mdash; Web Designer &amp; Frontend Developer</footer>
+</body>
 </html>
