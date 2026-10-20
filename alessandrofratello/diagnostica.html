@@ -137,9 +137,11 @@
   async function smilAnima() {
     var c = document.getElementById("smilC");
     if (!c || !c.r) return null;
-    var a = c.r.baseVal.value;
+    // ATTENZIONE: baseVal resta il valore dichiarato; il valore animato da SMIL
+    // sta in animVal. Con baseVal il test direbbe sempre "fermo".
+    var a = c.r.animVal.value;
     await sleep(320);
-    var b = c.r.baseVal.value;
+    var b = c.r.animVal.value;
     return a !== b;
   }
 
