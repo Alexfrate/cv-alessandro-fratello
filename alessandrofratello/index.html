@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/alessandrofratello/favicon.svg" />
+    <title>Alessandro Fratello — Curriculum Vitae</title>
+    <meta name="description" content="Curriculum vitae di Alessandro Fratello, web designer e frontend developer." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <!-- Al refresh il browser ripristina l'ultima posizione: la pagina deve
+         ripartire dall'header/hero. Deve essere INLINE e prima del body —
+         i module script sono deferred e arrivano troppo tardi (il ripristino
+         avviene comunque e resta). -->
+    <script>
+      if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+      window.scrollTo(0, 0);
+      window.addEventListener("pageshow", function (e) {
+        if (e.persisted) window.scrollTo(0, 0);
+      });
+    </script>
+    <script type="module" crossorigin src="/alessandrofratello/assets/index-DQbw-XvI.js"></script>
+    <link rel="stylesheet" crossorigin href="/alessandrofratello/assets/index-BFKgrL6a.css">
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
