@@ -9,6 +9,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <!-- La hero è dentro React: senza questo il browser la scopre solo dopo
+         aver scaricato il bundle e montato l'app (secondi su rete mobile).
+         Precaricandola qui, il download parte subito insieme al resto. -->
+    <link rel="preload" as="image" href="/alessandrofratello/photo/hero/hero1.webp" type="image/webp" fetchpriority="high" />
     <!-- Al refresh il browser ripristina l'ultima posizione: la pagina deve
          ripartire dall'header/hero. Deve essere INLINE e prima del body —
          i module script sono deferred e arrivano troppo tardi (il ripristino
@@ -20,7 +24,7 @@
         if (e.persisted) window.scrollTo(0, 0);
       });
     </script>
-    <script type="module" crossorigin src="/alessandrofratello/assets/index-D_2l7R8B.js"></script>
+    <script type="module" crossorigin src="/alessandrofratello/assets/index-DqsN5VzI.js"></script>
     <link rel="stylesheet" crossorigin href="/alessandrofratello/assets/index-DR8qFsa8.css">
   </head>
   <body>
