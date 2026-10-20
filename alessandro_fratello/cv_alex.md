@@ -8,7 +8,7 @@ Foggia (FG), Italia | alexfratello1982@gmail.com | 331 718 1509 | [LinkedIn](htt
 
 ## PROFILO PROFESSIONALE
 
-Sviluppatore web full-stack con 3-5 anni di esperienza nella progettazione e realizzazione di soluzioni digitali per PMI e startup. Specializzato in sviluppo WordPress, creazione di web app moderne e integrazione di soluzioni AI per l'automazione dei processi di business. Approccio orientato ai risultati, con capacità comprovate di gestione completa del ciclo di sviluppo, dalla definizione dei requisiti al deployment. Costantemente aggiornato sulle tecnologie emergenti del settore.
+Sviluppatore web full-stack con 10 anni di esperienza nella progettazione e realizzazione di soluzioni digitali per PMI e startup. Specializzato in sviluppo WordPress, creazione di web app moderne e integrazione di soluzioni AI per l'automazione dei processi di business. Approccio orientato ai risultati, con capacità comprovate di gestione completa del ciclo di sviluppo, dalla definizione dei requisiti al deployment. Costantemente aggiornato sulle tecnologie emergenti del settore.
 
 ---
 
