@@ -235,8 +235,8 @@
     // ── verdetto ───────────────────────────────────────────────────────────
     var v = document.getElementById("verdetto");
     if (reduce) {
-      v.className = "banner bad";
-      v.textContent = "Il telefono dichiara «RIDUCI MOVIMENTO» ATTIVO: il sito spegne intenzionalmente intro, ciborg e footer.";
+      v.className = "banner good";
+      v.textContent = "Riduci movimento ATTIVO — ma il sito ora anima comunque (bypass attivo): intro, ciborg e footer devono funzionare lo stesso.";
     } else if (!out.cssAnimation) {
       v.className = "banner bad";
       v.textContent = "Riduci movimento è spento, ma le animazioni CSS non si muovono: è un problema del browser/dispositivo.";
