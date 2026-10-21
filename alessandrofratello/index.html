@@ -28,51 +28,50 @@
         if (e.persisted) window.scrollTo(0, 0);
       });
     </script>
-    <!-- Rete di sicurezza: se il bundle non monta (HTML in cache che punta a un
-         asset con hash vecchio, file mancante dopo un deploy, modulo bloccato
-         dalla rete) lo schermo resterebbe nero per sempre. Si ricarica una
-         volta ignorando la cache e, se non basta, si mostra un messaggio con
-         il pulsante per riprovare. -->
+    <!-- Rete di sicurezza, solo per guasti veri. Regole:
+         · se il file JS non si scarica (404 dopo un deploy, modulo bloccato
+           dalla rete) si ricarica UNA volta con `?r=…` per saltare la cache;
+         · nessun reload a tempo: un caricamento lento non è un guasto, e
+           ricaricare mentre il bundle sta arrivando lo rende solo peggiore;
+         · se l'app va in errore prima di montare, si mostra un messaggio con
+           il pulsante (il testo dell'errore finisce sotto, per diagnosi).
+         Il messaggio si toglie da solo appena l'app monta. -->
     <script>
       (function () {
         var KEY = "cv-boot-retry";
-        function failed() {
+        var detail = "";
+        function alive() {
           var root = document.getElementById("root");
-          return !window.__cvAlive && !(root && root.children.length);
+          return !!window.__cvAlive || !!(root && root.children.length);
         }
-        function retried() {
+        function clear() {
+          var d = document.getElementById("boot-fail");
+          if (d) d.remove();
+        }
+        function retryOnce() {
+          if (alive()) return true;
           try {
-            return sessionStorage.getItem(KEY) === "1";
+            if (sessionStorage.getItem(KEY) === "1") return false;
+            sessionStorage.setItem(KEY, "1");
           } catch (e) {
             return false;
           }
-        }
-        function mark() {
-          try {
-            sessionStorage.setItem(KEY, "1");
-          } catch (e) {}
-        }
-        function retry() {
-          if (window.__cvAlive) return;
-          if (retried()) {
-            overlay();
-            return;
-          }
-          mark();
           var u = new URL(location.href);
           u.searchParams.set("r", Date.now().toString(36));
           location.replace(u.toString());
+          return true;
         }
-        function overlay() {
-          if (document.getElementById("boot-fail") || window.__cvAlive) return;
+        function overlay(msg) {
+          if (alive() || document.getElementById("boot-fail")) return;
+          if (msg) detail = msg;
           var d = document.createElement("div");
           d.id = "boot-fail";
           d.setAttribute("role", "alert");
           d.style.cssText =
             "position:fixed;inset:0;z-index:9999;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;padding:24px;text-align:center;background:#01070B;color:#FCFCFD;font-family:Inter,system-ui,-apple-system,sans-serif";
           var p = document.createElement("p");
-          p.textContent = "Il sito non è riuscito a caricarsi. Di solito basta ricaricare.";
-          p.style.cssText = "margin:0;max-width:32ch;font-size:15px;line-height:1.5;color:#9AA3AD";
+          p.textContent = "Il sito non è riuscito a caricarsi. Controlla la connessione e riprova.";
+          p.style.cssText = "margin:0;max-width:34ch;font-size:15px;line-height:1.5;color:#9AA3AD";
           var b = document.createElement("button");
           b.type = "button";
           b.textContent = "Ricarica";
@@ -86,21 +85,44 @@
           });
           d.appendChild(p);
           d.appendChild(b);
+          if (detail) {
+            var s = document.createElement("p");
+            s.textContent = detail.slice(0, 160);
+            s.style.cssText =
+              "margin:0;max-width:60ch;font:11px/1.5 ui-monospace,SFMono-Regular,Menlo,monospace;color:#5B6470;word-break:break-word";
+            d.appendChild(s);
+          }
           document.body.appendChild(d);
         }
-        setTimeout(retry, 9000);
+        // il bundle non è stato scaricato: unico caso in cui ricaricare aiuta
         window.addEventListener(
           "error",
           function (e) {
-            if (e.target && e.target.tagName === "SCRIPT") retry();
+            var t = e.target;
+            if (!t || t.tagName !== "SCRIPT") return;
+            if (!retryOnce()) overlay("Non riesco a scaricare " + (t.src || "il file JS"));
           },
           true
         );
-        // se un altro script fallisce dopo il mount non c'è nulla da fare
+        // errore vero prima del mount: niente reload (sarebbe identico)
+        window.addEventListener("error", function (e) {
+          if (alive() || (e.target && e.target.tagName === "SCRIPT")) return;
+          overlay(e.message || "Errore JavaScript in avvio");
+        });
+        window.addEventListener("unhandledrejection", function (e) {
+          if (alive()) return;
+          var r = e.reason;
+          overlay((r && (r.message || String(r))) || "Promise rifiutata in avvio");
+        });
+        // ultima spiaggia: dopo 25s senza app, si mostra il messaggio (niente reload)
+        setTimeout(function () {
+          if (!alive()) overlay("");
+        }, 25000);
         window.__cvBootFail = overlay;
+        window.__cvBootClear = clear;
       })();
     </script>
-    <script type="module" crossorigin src="/alessandrofratello/assets/index-DjvZyqfd.js"></script>
+    <script type="module" crossorigin src="/alessandrofratello/assets/index-C4cTV9C4.js"></script>
     <link rel="stylesheet" crossorigin href="/alessandrofratello/assets/index-CYLRdZgi.css">
   </head>
   <body>
