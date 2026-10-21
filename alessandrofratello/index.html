@@ -28,8 +28,80 @@
         if (e.persisted) window.scrollTo(0, 0);
       });
     </script>
-    <script type="module" crossorigin src="/alessandrofratello/assets/index-SgziPqlD.js"></script>
-    <link rel="stylesheet" crossorigin href="/alessandrofratello/assets/index-CyGJZtLC.css">
+    <!-- Rete di sicurezza: se il bundle non monta (HTML in cache che punta a un
+         asset con hash vecchio, file mancante dopo un deploy, modulo bloccato
+         dalla rete) lo schermo resterebbe nero per sempre. Si ricarica una
+         volta ignorando la cache e, se non basta, si mostra un messaggio con
+         il pulsante per riprovare. -->
+    <script>
+      (function () {
+        var KEY = "cv-boot-retry";
+        function failed() {
+          var root = document.getElementById("root");
+          return !window.__cvAlive && !(root && root.children.length);
+        }
+        function retried() {
+          try {
+            return sessionStorage.getItem(KEY) === "1";
+          } catch (e) {
+            return false;
+          }
+        }
+        function mark() {
+          try {
+            sessionStorage.setItem(KEY, "1");
+          } catch (e) {}
+        }
+        function retry() {
+          if (window.__cvAlive) return;
+          if (retried()) {
+            overlay();
+            return;
+          }
+          mark();
+          var u = new URL(location.href);
+          u.searchParams.set("r", Date.now().toString(36));
+          location.replace(u.toString());
+        }
+        function overlay() {
+          if (document.getElementById("boot-fail") || window.__cvAlive) return;
+          var d = document.createElement("div");
+          d.id = "boot-fail";
+          d.setAttribute("role", "alert");
+          d.style.cssText =
+            "position:fixed;inset:0;z-index:9999;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;padding:24px;text-align:center;background:#01070B;color:#FCFCFD;font-family:Inter,system-ui,-apple-system,sans-serif";
+          var p = document.createElement("p");
+          p.textContent = "Il sito non è riuscito a caricarsi. Di solito basta ricaricare.";
+          p.style.cssText = "margin:0;max-width:32ch;font-size:15px;line-height:1.5;color:#9AA3AD";
+          var b = document.createElement("button");
+          b.type = "button";
+          b.textContent = "Ricarica";
+          b.style.cssText =
+            "font:inherit;font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:14px 24px;border:0;border-radius:999px;background:#FC6003;color:#01070B;cursor:pointer";
+          b.addEventListener("click", function () {
+            try {
+              sessionStorage.removeItem(KEY);
+            } catch (e) {}
+            location.reload();
+          });
+          d.appendChild(p);
+          d.appendChild(b);
+          document.body.appendChild(d);
+        }
+        setTimeout(retry, 9000);
+        window.addEventListener(
+          "error",
+          function (e) {
+            if (e.target && e.target.tagName === "SCRIPT") retry();
+          },
+          true
+        );
+        // se un altro script fallisce dopo il mount non c'è nulla da fare
+        window.__cvBootFail = overlay;
+      })();
+    </script>
+    <script type="module" crossorigin src="/alessandrofratello/assets/index-DjvZyqfd.js"></script>
+    <link rel="stylesheet" crossorigin href="/alessandrofratello/assets/index-CYLRdZgi.css">
   </head>
   <body>
     <!-- Sfondo di avvio: React impiega 1-2s su un telefono a montare, e senza
